@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Divs Next to Each Other</title>
+<style>
+    .container {
+        display: flex;
+    }
+    .box {
+        flex: 1;
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box">
+        <h2>Div 1</h2>
+        <p>This is the content of Div 1.</p>
+    </div>
+    <div class="box">
+        <h2>Div 2</h2>
+        <p>This is the content of Div 2.</p>
+    </div>
+</div>
+<div style="border: 1px solid #000; display: flex;">
+    <!-- <div style="display: flex; justify-content: space-between;">
+        <div style="flex: 1;">
+            <br><br>
+            <img src="https://images.app.goo.gl/W1bFAvUo9CmxNKhm9" style="max-height: 150px; max-width: 280px;" alt="...">
+        </div>
+        <div style="flex: 1;">
+            <h2 style="text-align: right;">Slip Gaji Karyawan</h2>
+            <address style="text-align: right;">
+                <span>Jl.Veteran 3 No.36, RT 001/RW 010</span><br>
+                <span>Kec. Kelapa Muda, Kel. Bencongan Pepaya</span><br>
+                <span>Kab, Medan, 15820</span><br>
+            </address>
+        </div>
+    </div> -->
+
+    <div style="display: flex; justify-content: space-between;" >
+        <div style="flex: 1;">
+            <h2 style="text-align: center;">PT HR Management System</h2><br>
+            <div style="display: flex; justify-content: space-between;">
+                <div style="flex: 1; text-align: left;">
+                    <span style="text-align: left;">Nama Lengkap : {{ $users->name }}</span><br>
+                    <span style="text-align: left;">ID Karyawan : {{ $users->employee_id }}</span><br>
+                    <span style="text-align: left;">Jabatan : {{ $users->positions->name }}</span><br>
+                </div>
+            </div>
+            <div style="flex: 1; text-align: right;">
+                <span style="text-align: right;">Jenis Kelamin : 
+                    @if ($users->jenis_kelamin == 'boy')
+                        Laki-Laki
+                    @elseif ($users->jenis_kelamin == 'girl')
+                        Perempuan
+                    @endif
+                </span><br>
+                <span style="text-align: right;">No Telepon : {{ $users->phone }}</span><br>
+                <span style="text-align: right;">Mulai Kerja : {{ $users->joining_date }}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="display: flex; justify-content: space-between;">
+    <div style="flex: 1;">
+        <br><br>
+        <img src="{{ asset('assets/auth/img/logo-fix.png') }}" style="max-height: 150px; max-width: 280px;" alt="...">
+    </div>
+    <div style="flex: 1;">
+        <h2 style="text-align: right;">Slip Gaji Karyawan</h2>
+        <address style="text-align: right;">
+            <span>Jl.Veteran 3 No.36, RT 001/RW 010</span><br>
+            <span>Kec. Kelapa Muda, Kel. Bencongan Pepaya</span><br>
+            <span>Kab, Medan, 15820</span><br>
+        </address>
+    </div>
+</div>
+
+    <div style="display: flex;">
+        <div style="flex: 1;">
+            <h2 style="text-align: center;">PT HR Management System</h2><br>
+            <div style="display: flex; justify-content: space-between;">
+                <div style="text-align: left;">
+                    <span style="text-align: left;">Nama Lengkap : {{ $users->name }}</span><br>
+                    <span style="text-align: left;">ID Karyawan : {{ $users->employee_id }}</span><br>
+                    <span style="text-align: left;">Jabatan : {{ $users->positions->name }}</span><br>
+                </div>
+                <div style="text-align: right;">
+                    <span style="text-align: right;">Jenis Kelamin : 
+                        @if ($users->jenis_kelamin == 'boy')
+                            Laki-Laki
+                        @elseif ($users->jenis_kelamin == 'girl')
+                            Perempuan
+                        @endif
+                    </span><br>
+                    <span style="text-align: right;">No Telepon : {{ $users->phone }}</span><br>
+                    <span style="text-align: right;">Mulai Kerja : {{ $users->joining_date }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div style="display: flex;">
+    <div style="flex: 1;">
+        <div style="display: flex; justify-content: space-between;">
+            <div style="text-align: left;">
+                <h2 style="text-align: left;">Pendapatan</h2>
+                <span style="text-align: left;">Gaji Pokok : {{ $users->gaji }}</span><br>
+                <span style="text-align: left;">Tunjangan Jabatan : {{ $users->tunjangan_jabatan }}</span><br>
+                <span style="text-align: left;">Biaya Lembur : {{ $users->lembur }}</span><br>
+                <span style="text-align: left;">Biaya Makan : {{ $users->uang_makan }}</span><br>
+                <span style="text-align: left;">Total Pendapatan : {{ number_format($users->gaji + $users->tunjangan_jabatan + $users->lembur + $users->uang_makan, 0, ',', '.') }}</span><br>
+            </div>
+            <div style="text-align: right;">
+                <h2 style="text-align: right;">Pengeluaran</h2>
+                <span style="text-align: right;">Potongan BPJS : {{ $users->pot_bpjs }}</span><br>
+                <span style="text-align: right;">Potongan Pajak : {{ $users->pot_pajak }}</span><br>
+                <span style="text-align: right;">Potongan JHT : {{ $users->pot_jht }}</span><br>
+                <span style="text-align: right;">Total Pengeluaran : {{ number_format($users->pot_bpjs + $users->pot_pajak + $users->pot_jht, 0, ',', '.') }}</span><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: flex;">
+    <div style="flex: 1;">
+        <div style="display: flex; justify-content: space-between;">
+            <div style="border: 1px solid #000; text-align:left;">
+                <span style="text-align: left;">Total Penerimaan Bulan Ini</span>
+                <h1 style="text-align: left;">{{ number_format($users->gaji + $users->tunjangan_jabatan + $users->lembur + $users->uang_makan - $users->pot_bpjs - $users->pot_pajak - $users->pot_jht, 0, ',', '.') }}</h1>
+            </div>
+            <div style="text-align: right;">
+
+                <span>Jakarta Pusat, 08 Mei 2024</span><br>
+                <span>Human Resources</span><br><br><br><br>
+                <span>Irwan Prasetyo</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
